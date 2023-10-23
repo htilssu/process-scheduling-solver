@@ -1,4 +1,4 @@
-import { solvedProcessesInfoType, ganttChartInfoType } from './';
+import {solvedProcessesInfoType, ganttChartInfoType, getFirstTime} from './';
 
 export const pp = (
   arrivalTime: number[],
@@ -8,7 +8,7 @@ export const pp = (
   const processesInfo = arrivalTime
     .map((item, index) => {
       return {
-        job: (index + 10).toString(36).toUpperCase(),
+        job: "P" + (index + 1),
         at: item,
         bt: burstTime[index],
         priority: priorities[index],
@@ -22,7 +22,7 @@ export const pp = (
       return 0;
     });
 
-  const solvedProcessesInfo: solvedProcessesInfoType = [];
+  let solvedProcessesInfo: solvedProcessesInfoType = [];
   const ganttChartInfo: ganttChartInfoType = [];
 
   const readyQueue: {
@@ -140,7 +140,6 @@ export const pp = (
             readyQueue.push(p);
           }
         });
-
         ganttChartInfo.push({
           job: processToExecute.job,
           start: prevCurrentTime,
@@ -180,6 +179,11 @@ export const pp = (
     if (process1.job < process2.job) return -1;
     return 0;
   });
+
+  const firstTime = getFirstTime(solvedProcessesInfo, ganttChartInfo);
+  solvedProcessesInfo = solvedProcessesInfo.map((item, index) => ({
+    ...item, rt: firstTime[index].rt - item.at,
+  }))
 
   return { solvedProcessesInfo, ganttChartInfo };
 };

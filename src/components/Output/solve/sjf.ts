@@ -4,7 +4,7 @@ export const sjf = (arrivalTime: number[], burstTime: number[]) => {
   const processesInfo = arrivalTime
     .map((item, index) => {
       return {
-        job: (index + 10).toString(36).toUpperCase(),
+        job: "P" + (index + 1),
         at: item,
         bt: burstTime[index],
       };
@@ -33,6 +33,7 @@ export const sjf = (arrivalTime: number[], burstTime: number[]) => {
         ft: finishTime[0],
         tat: finishTime[0] - processesInfo[0].at,
         wat: finishTime[0] - processesInfo[0].at - processesInfo[0].bt,
+        rt: finishTime[0] - processesInfo[0].at - processesInfo[0].bt,
       });
 
       processesInfo.forEach((p) => {
@@ -105,6 +106,7 @@ export const sjf = (arrivalTime: number[], burstTime: number[]) => {
         ft: newestFinishTime,
         tat: newestFinishTime - processToExecute.at,
         wat: newestFinishTime - processToExecute.at - processToExecute.bt,
+        rt: newestFinishTime - processToExecute.at - processToExecute.bt,
       });
 
       processesInfo.forEach((p) => {

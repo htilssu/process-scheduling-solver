@@ -260,7 +260,7 @@ const Input = (props: InputProps) => {
             />
           </fieldset>
         )}
-        <Button>Solve</Button>
+        <Button>Giải</Button>
       </Form>
     </StyledInput>
   );
