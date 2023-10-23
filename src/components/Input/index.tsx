@@ -144,11 +144,11 @@ const Input = (props: InputProps) => {
       .map((priority) => parseInt(priority));
 
     if (burstTimeArr.includes(0)) {
-      invalidInputSwal('0 burst time is invalid');
+      invalidInputSwal('0 burst time không hợp lệ');
       return;
     } else if (arrivalTimeArr.length !== burstTimeArr.length) {
       invalidInputSwal(
-        'Number of the arrival times and burst times do not match'
+        'Số arrival time và burst time phải có cùng số lượng'
       );
       return;
     } else if (
@@ -156,13 +156,13 @@ const Input = (props: InputProps) => {
       burstTimeArr.includes(NaN) ||
       (selectedAlgo.value === 'RR' && isNaN(timeQuantumInt))
     ) {
-      invalidInputSwal('Please enter only integers');
+      invalidInputSwal('Chỉ nhập số nguyên');
       return;
     } else if (
       arrivalTimeArr.some((t) => t < 0) ||
       burstTimeArr.some((t) => t < 0)
     ) {
-      invalidInputSwal('Negative numbers are invalid');
+      invalidInputSwal('Không được nhập số âm');
       return;
     }
 
@@ -174,7 +174,7 @@ const Input = (props: InputProps) => {
         prioritiesArr.length !== arrivalTimeArr.length
       ) {
         invalidInputSwal(
-          'Arrival times, burst times and priorities should have equal length'
+          'Arrival times, burst times and priorities phải có cùng độ dài'
         );
         return;
       }
