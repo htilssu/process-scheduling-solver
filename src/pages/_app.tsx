@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import GlobalStyle, {fontFaceRules} from '../components/GlobalStyle.css';
 
-import icon from "../../public/icon.svg"
+import icon from "/icon.svg"
 
 export default function App({Component, pageProps}) {
     return (
