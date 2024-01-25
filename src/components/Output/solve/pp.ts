@@ -167,6 +167,7 @@ export const pp = (
         ft: currentTime,
         tat: currentTime - processToExecute.at,
         wat: currentTime - processToExecute.at - processToExecute.bt,
+        rt: currentTime - processToExecute.at - processToExecute.bt,
       });
     }
   }
