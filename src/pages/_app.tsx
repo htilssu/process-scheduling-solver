@@ -6,7 +6,6 @@ export default function App({Component, pageProps}) {
     return (
         <>
             <Head>
-                    <link rel="shortcut icon" href="/icon.svg" type="image/x-icon"/>
                 <style
                     dangerouslySetInnerHTML={{
                         __html: fontFaceRules,
